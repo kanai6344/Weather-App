@@ -2,80 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Weather App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #e0e7ff;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            max-width: 400px;
-            margin: 60px auto;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            padding: 30px 20px;
-            text-align: center;
-        }
-        input[type="text"] {
-            padding: 10px;
-            width: 70%;
-            border: 1px solid #bdbdbd;
-            border-radius: 5px;
-            margin-bottom: 15px;
-        }
-        button {
-            padding: 10px 20px;
-            background: #6366f1;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .weather-result {
-            margin-top: 20px;
-        }
-    </style>
+    <title>Weather App</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+    <div class="weather-container">
         <h1>Weather App</h1>
-        <input type="text" id="cityInput" placeholder="Enter city name">
-        <button onclick="getWeather()">Get Weather</button>
-        <div class="weather-result" id="weatherResult"></div>
+        <div class="search-container">
+            <input type="text" id="city-input" placeholder="Enter city name">
+            <button id="search-btn">Search</button>
+        </div>
+        <div class="weather-info" id="weather-info">
+            <p>Search for a city to see weather information</p>
+        </div>
     </div>
-    <script>
-        async function getWeather() {
-            const city = document.getElementById('cityInput').value;
-            const resultDiv = document.getElementById('weatherResult');
-            if (!city) {
-                resultDiv.innerHTML = '<span style="color:red;">Please enter a city name.</span>';
-                return;
-            }
-            resultDiv.innerHTML = 'Loading...';
-            try {
-                const apiKey = 'YOUR_API_KEY';
-                const response = await fetch(
-                    `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${apiKey}&units=metric`
-                );
-                if (!response.ok) {
-                    throw new Error('City not found');
-                }
-                const data = await response.json();
-                resultDiv.innerHTML = `
-                    <h2>${data.name}, ${data.sys.country}</h2>
-                    <p><strong>${data.weather[0].main}</strong> - ${data.weather[0].description}</p>
-                    <p>Temperature: ${data.main.temp}°C</p>
-                    <p>Humidity: ${data.main.humidity}%</p>
-                    <p>Wind: ${data.wind.speed} m/s</p>
-                `;
-            } catch (error) {
-                resultDiv.innerHTML = `<span style="color:red;">${error.message}</span>`;
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
