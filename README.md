@@ -21,5 +21,5 @@ A simple, API-based weather application that displays current weather conditions
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/kanai6344/weather-app.git
-   cd weather-app
+   git clone https://github.com/kanai6344/Weather-App.git
+   cd Weather-App
