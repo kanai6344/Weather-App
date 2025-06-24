@@ -1,8 +1,8 @@
 # Weather App 🌦️
 
-![Weather-App Screenshot](weather.png)
-
 A simple, API-based weather application that displays current weather conditions for any city worldwide.
+
+![Weather-App Screenshot](weather.png)
 
 ## Features ✨
 
